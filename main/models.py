@@ -1,6 +1,16 @@
 from django.db import models
 
 # Create your models here.
+class ProductCategory(models.Model):
+    name = models.CharField(max_length=64, blank=True, null=True, default=None)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return "%s" % self.name
+
+    class Meta:
+        verbose_name = 'Категорія товарів'
+        verbose_name_plural = 'Категорія товарів'
 class Product(models.Model):
     name = models.CharField(max_length=40,blank=True,null=True,default=None)
     price = models.DecimalField(max_digits=10,decimal_places=2,default=0)
@@ -10,6 +20,7 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True)
     create = models.DateTimeField(auto_now_add=True,auto_now=False)
     update = models.DateTimeField(auto_now_add=False,auto_now=True)
+    category = models.ForeignKey(ProductCategory, blank=True, null=True, default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s,%s' % (self.price,self.name)
@@ -32,3 +43,4 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = 'Фотографія'
         verbose_name_plural = 'Фотографії'
+

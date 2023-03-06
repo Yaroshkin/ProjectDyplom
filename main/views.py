@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from main.models import *
-def index(request):
+def catalog(request):
     products_images = ProductImage.objects.filter(is_active=True, is_main=True)
-    return render(request, 'index.html', locals())
+    return render(request, 'catalog.html', locals())
 
 def home(request):
     return render(request,'home.html')
