@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block body %}
     {% include 'header.html' %}
+    {% load static %}
 
-
+    <div>{% for product_image in products_images %}
+    {% endfor %}</div>
     {% include 'footer.html' %}
 {% endblock %}
 
