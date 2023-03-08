@@ -1,47 +1,15 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block body %}
     {% include 'header.html' %}
-    {% load static %}
-
-
-    <div class="container">
-    <h1>Телефони</h1>
-    <div class="row">
-        {% for product_image in products_images_telephone %}
-        <div class="col-md-3 mb-3">
-            <div class="card">
-                <img src="{{ product_image.image.url }}" class="card-img-top" alt="{{ product.name }}" >
-                <div class="card-body">
-                    <h5 class="card-title">{{ product_image.product.name }}</h5>
-                    <p class="card-text">{{ product_image.product.description }}</p>
-                    <p class="card-text">${{ product_image.product.price }} UAH</p>
-                    <a href="" class="btn btn-primary">Додати у кошик</a>
+        <div class="container">
+            <div class="col-6">
+                <div>
+                    <a href="catalog/telephone">Телефони</a>
+                </div>
+                <div>
+                    <a href="catalog/notebook">Ноутбуки</a>
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
-</div>
-     <div class="container">
-    <h1>Ноутбуки</h1>
-    <div class="row">
-        {% for product_image in products_images_notebook %}
-        <div class="col-md-3 mb-3">
-            <div class="card">
-                <img src="{{ product_image.image.url }}" class="card-img-top" alt="{{ product.name }}" >
-                <div class="card-body">
-                    <h5 class="card-title">{{ product_image.product.name }}</h5>
-                    <p class="card-text">{{ product_image.product.description }}</p>
-                    <p class="card-text">${{ product_image.product.price }} UAH</p>
-                    <a href="" class="btn btn-primary">Додати у кошик</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
-
     {% include 'footer.html' %}
 {% endblock %}
-
-

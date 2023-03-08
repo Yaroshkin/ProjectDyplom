@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body %}
+    {% include 'header.html' %}
+    {% load static %}
+
+    <div class="container">
+    <h2>Телефони</h2>
+    <div class="row">
+        {% for product_image in products_images_telephone %}
+             {% include 'prod_item.html' %}
+        {% endfor %}
+    </div>
+</div>
+    {% include 'footer.html' %}
+{% endblock %}
