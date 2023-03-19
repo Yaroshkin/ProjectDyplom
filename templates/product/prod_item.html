@@ -1,0 +1,21 @@
+<div class="col-lg-3">
+            <div class="card">
+                <a href="{% url 'product' product_image.product.id %}">
+                    <img src="{{ product_image.image.url }}" class="card-img-top" alt="{{ product.name }}" >
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title" >
+                        {{ product_image.product.name }}
+                    </h5>
+                    <p class="card-text">
+                        {{ product_image.product.short_description }}
+                    </p>
+                    <p class="card-price">
+                        ${{ product_image.product.price }} UAH
+                    </p>
+                    <div class="add-btn">
+                        <a href="" class="btn btn-outline-primary">Додати у кошик</a>
+                    </div>
+                </div>
+            </div>
+</div>

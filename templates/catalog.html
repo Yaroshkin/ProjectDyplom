@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
 {% block body %}
     {% include 'header.html' %}
-        <div class="container">
-            <div class="col-6">
-                <div class="nav-item">
-                    <a href="telephone" class="btn btn-light">Телефони</a>
-                </div>
-                <div>
-                    <a href="notebook">Ноутбуки</a>
-                </div>
+       {% load static %}
+
+    <div class="container">
+        <h2>Телефони</h2>
+            <div class="row">
+                {% for product_image in products_images_telephone %}
+                     {% include 'product/prod_item.html' %}
+                {% endfor %}
             </div>
-        </div>
+    </div>
+
+    <div class="container">
+        <h2>Ноутбуки</h2>
+            <div class="row">
+                {% for product_image in products_images_notebook %}
+                     {% include 'product/prod_item.html' %}
+                {% endfor %}
+            </div>
+    </div>
+
+    <div class="container">
+        <h2>Аксессуари для ПК</h2>
+            <div class="row">
+                {% for product_image in products_images_accesory %}
+                     {% include 'product/prod_item.html' %}
+                {% endfor %}
+            </div>
+    </div>
     {% include 'footer.html' %}
 {% endblock %}
