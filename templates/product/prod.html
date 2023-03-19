@@ -42,7 +42,7 @@
                     </div>
                   </div>
                 <div>
-                    <form id="form_buy" class="form-inline">
+                    <form id="form_buy" class="form-inline" action="{% url 'cart_adding' %}">{% csrf_token %}
                         <input type="number" class="form-control" id="number">
                         <button type="submit" id="submit_btn" class="btn btn-primary" data-id_prod = "{{ product.id }}"
                                 data-name_prod = "{{ product.name }}"

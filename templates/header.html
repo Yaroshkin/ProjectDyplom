@@ -23,12 +23,22 @@
       <ul class="nav">
         <li>
             <div class="cart-container">
-                <a href="№" class="btn btn-light">Корзина</a>
+                <a href="№" class="btn btn-light">Корзина <span id="cart_total_nmb">
+                    {% if products_total_nmb %}
+                        {{ products_total_nmb }}
+                    {% else %}
+                        (0)
+                    {% endif %}
+                </span></a>
                 <div class="cart_prod hidden">
                     <ul class="">
+                        {% for product_cart in products_in_cart %}
                         <li>
-                            view
+                            {{ product_cart.product.name }} {{ product_cart.nmb }} шт.
+                            по {{ product_cart.price_per_item }} UAH
+                            <a class="delete-item" href="" data-id_prod="{{ product_cart.id }}">x</a>
                         </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -41,7 +51,7 @@
     </div>
   </nav>
 </heaad>
-<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/form_script.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
