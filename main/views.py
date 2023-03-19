@@ -26,7 +26,7 @@ def home(request):
     return render(request,'home.html')
 
 def cart(request):
-    return render(request,'cart.html')
+    return render(request,'')
 
 def about(request):
     return render(request,'about.html')

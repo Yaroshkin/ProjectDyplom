@@ -23,7 +23,7 @@
                   <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">
                         <a href="#description" aria-controls="home" role="tab" data-toggle="tab">
-                            Описание
+                            Опис
                         </a>
                     </li>
                     <li role="presentation">
@@ -41,6 +41,16 @@
                         {{product.charecters}}
                     </div>
                   </div>
+                <div>
+                    <form id="form_buy" class="form-inline">
+                        <input type="number" class="form-control" id="number">
+                        <button type="submit" id="submit_btn" class="btn btn-primary" data-id_prod = "{{ product.id }}"
+                                data-name_prod = "{{ product.name }}"
+                                data-price_prod = "{{ product.price }}">
+                                Купити
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         </div>

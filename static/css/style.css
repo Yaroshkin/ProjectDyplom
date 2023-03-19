@@ -62,3 +62,17 @@ footer{
     left: 50%;
     transform: translateX(-50%);
 }
+
+.card-container{
+    position: relative;
+    width: 400px;
+    padding: 15px 10px;
+}
+
+.cart_prod {
+    position: absolute;
+    top: 30px;
+    width: 400px;
+    background-color: whitesmoke;
+    z-index: 10;
+}
