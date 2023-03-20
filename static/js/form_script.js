@@ -53,19 +53,16 @@ $(document).ready(function () {
         });
 
         function showcart() {
-            $('.cart_prod').removeClass('hidden ')
+            $('.cart_prod').toggleClass('hidden ')
         }
 
-        // $('.cart-container').on('click', function (e){
-        //     e.preventDefault();
-        //     showcart();
-        // });
+
         $('.cart-container').mouseover(function () {
             showcart();
         });
-        // $('.cart-container').mouseout(function (){
-        //    showcart();
-        // });
+        $('.cart-container').mouseout(function (){
+           showcart();
+        });
 
         $(document).on('click', '.delete-item', function (e) {
             e.preventDefault()
@@ -73,4 +70,24 @@ $(document).ready(function () {
             number = 0
             cartUpdate(id_prod, number, is_delete = true);
         })
+
+    function CalcCart(){
+        let total_order = 0;
+        $('.total_prod').each(function (){
+            total_order += parseFloat($(this).text());
+        })
+        $('#total_order').text(total_order.toFixed(2))
+    }
+
+        $(document).on('change', ".prod-cart-nmb", function (){
+            let current_nmb = $(this).val();
+            let cur_tr = $(this).closest('tr');
+            let current_price = parseFloat(cur_tr.find('.prod-price').text());
+            let total_amount = current_nmb*current_price;
+            cur_tr.find('.total_prod').text(total_amount.toFixed(2));
+            CalcCart();
+    })
+
+
+    CalcCart();
 })

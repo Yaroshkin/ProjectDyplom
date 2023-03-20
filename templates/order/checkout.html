@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block body %}
+    {% include 'header.html' %}
+    {% load static %}
+
+    <div class="container">
+        <div class="row">
+            {% if product_in_cart %}
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h3 class="text-center">Товари у корзині</h3>
+                    <form class="form-horizontal" method="post">{% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label>Ім'я</label>
+                                <span class="form-error">{{ form.name.errors }}</span>
+                                <input type="text" name="{{ form.name.html_name }}" class="form-control" value="{{ request.POST.name }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label>Телефон</label>
+                                <span class="form-error">{{ form.phone.errors }}</span>
+                                <input type="text" name="{{ form.phone.html_name }}" class="form-control" value="{{ request.POST.phone }}">
+                            </div>
+                        </div>
+
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>Назва товару</th>
+                                    <th>Кількість одиниць</th>
+                                    <th>Вартість за одиницю</th>
+                                    <th>Загальна вартість</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product_cart in product_in_cart %}
+                                <tr>
+                                    <td>
+                                        {{ product_cart.product.name }}
+                                    </td>
+                                    <td>
+                                        <input  value="{{ product_cart.nmb }}" type="number" class="prod-cart-nmb" name="product_cart_{{ product_cart.id }}">
+                                    </td>
+                                    <td>
+                                        <span class="prod-price">
+                                            {{ product_cart.price_per_item }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="total_prod">
+                                            {{ product_cart.total_price }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <div class="text-right">
+                            <b>Вартість заказу: </b> <span id="total_order"></span>
+                        </div>
+                        <hr>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary ">Заказати</button>
+                        </div>
+                </form>
+            </div>
+        {% else %}
+                <h3 class="text-center">У ващій корзині немає товару</h3>
+        {% endif %}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+{% endblock %}

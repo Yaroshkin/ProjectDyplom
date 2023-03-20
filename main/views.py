@@ -5,7 +5,7 @@ def catalogs(request):
     products_images_telephone = products_images.filter(product__category_id=1)
     products_images_notebook = products_images.filter(product__category_id=2)
     products_images_acsessory = products_images.filter(product__category_id=3)
-    return render(request, 'catalog.html', locals())
+    return render(request, 'product/catalog.html', locals())
 
 def phone(request):
     products_images = ProductImage.objects.filter(is_active=True, is_main=True)

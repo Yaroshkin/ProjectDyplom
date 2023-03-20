@@ -18,6 +18,7 @@ class Status(models.Model):
 
 
 class Order(models.Model):
+    user = models.ForeignKey(User, blank=True, null=True, default=None, on_delete=models.CASCADE)
     total_price = models.DecimalField(max_digits=10, decimal_places=2,default=0)
     customer_name = models.CharField(max_length=20,blank=True, null=True,default=None)
     customer_email = models.EmailField(blank=True, null=True,default=None)

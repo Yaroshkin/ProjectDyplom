@@ -1,5 +1,8 @@
 from django.http import JsonResponse
-from .models import ProductInCart
+from django.shortcuts import render
+from .models import *
+from .forms import CheckoutContactForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def cart_adding(request):
@@ -34,3 +37,29 @@ def cart_adding(request):
         return_dict["prod"].append(product_dict)
 
     return JsonResponse(return_dict)
+
+def checkout(request):
+    session_key = request.session.session_key
+    product_in_cart = ProductInCart.objects.filter(session_key=session_key, is_active=True, order__isnull=True)
+    form = CheckoutContactForm(request.POST or None)
+    if request.POST:
+        print(request.POST)
+        if form.is_valid():
+            print("yes")
+            data = request.POST
+            name = data.get("name",None)
+            phone = data["phone"]
+            user, created = User.objects.get_or_create(username=phone,defaults={"first_name": name})
+
+            order = Order.objects.create(user=user, customer_name=name, customer_phone=phone, status_id=1)
+
+            for name, value in data.items():
+                if name.startswith("product_cart_"):
+                    prod_in_cart_id = name.split("product_cart_")[1]
+                    prod = ProductInCart.objects.get(id=prod_in_cart_id)
+                    prod.nmb = value
+                    prod.save(force_update=True)
+                    ProductInOrder.objects.create(product=prod.product, nmb=prod.nmb,price_per_item=prod.price_per_item, total_price=prod.total_price,order=order)
+        else:
+            print("no")
+    return render(request,'order/checkout.html',locals())
