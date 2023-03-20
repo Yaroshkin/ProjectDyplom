@@ -58,6 +58,7 @@ def checkout(request):
                     prod_in_cart_id = name.split("product_cart_")[1]
                     prod = ProductInCart.objects.get(id=prod_in_cart_id)
                     prod.nmb = value
+                    prod.order = order
                     prod.save(force_update=True)
                     ProductInOrder.objects.create(product=prod.product, nmb=prod.nmb,price_per_item=prod.price_per_item, total_price=prod.total_price,order=order)
         else:
