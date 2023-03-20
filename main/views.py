@@ -4,7 +4,7 @@ def catalogs(request):
     products_images = ProductImage.objects.filter(is_active=True, is_main=True)
     products_images_telephone = products_images.filter(product__category_id=1)
     products_images_notebook = products_images.filter(product__category_id=2)
-    products_images_acsessory = products_images.filter(product__category_id=3)
+    products_images_accessory = products_images.filter(product__category_id=3)
     return render(request, 'product/catalog.html', locals())
 
 def phone(request):
@@ -19,7 +19,7 @@ def notebook(request):
 
 def accesory(request):
     products_images = ProductImage.objects.filter(is_active=True,is_main=True)
-    products_images_accesory = products_images.filter(product__category_id=3)
+    products_images_accessory = products_images.filter(product__category_id=3)
     return render(request, 'product/accsesory.html', locals())
 
 def home(request):
