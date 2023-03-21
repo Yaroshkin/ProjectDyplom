@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+
 ]
 
 ROOT_URLCONF = 'Dymplom.urls'
@@ -132,3 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CART_SESSION_ID = 'cart' #для корзини
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
