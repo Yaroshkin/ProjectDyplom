@@ -1,1 +1,1 @@
-web: gunicorn Dymplom.wsgi --log.file-
+web: gunicorn Dymplom.wsgi --log-file-
