@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-((hq(xvb4)jvfgk74xcsm36z@4^tins6i*!l$&*-&5u&0irjra
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['https://web-production-67ba.up.railway.app/']
 
 
 # Application definition
@@ -60,6 +60,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = ["*"]
 CORS_ORIGIN_WHITELIST = ['*']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 
