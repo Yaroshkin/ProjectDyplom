@@ -58,7 +58,7 @@ MIDDLEWARE = [
 
 ]
 
-CORS_ALLOWED_ORIGINS = []
+CORS_ALLOWED_ORIGINS = ["*"]
 
 
 ROOT_URLCONF = 'Dymplom.urls'
