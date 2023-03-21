@@ -58,7 +58,7 @@ MIDDLEWARE = [
 
 ]
 
-CORS_ALLOWED_ORIGINS = [    'https://web-production-67ba.up.railway.app',]
+CORS_ALLOWED_ORIGINS = []
 
 
 ROOT_URLCONF = 'Dymplom.urls'
