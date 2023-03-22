@@ -25,8 +25,8 @@ def accesory(request):
 def home(request):
     return render(request,'home.html')
 
-def cart(request):
-    return render(request,'')
+def register(request):
+    return render(request,'register.html')
 
 def about(request):
     return render(request,'about.html')
