@@ -8,5 +8,5 @@ urlpatterns = [
     path('telephone',views.phone),
     path('notebook',views.notebook),
     path('accesory',views.accesory),
-    path('register',views)
+    path('register',views.register)
 ]
